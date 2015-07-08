@@ -6,7 +6,7 @@ A Basic Namespacing implementation
 ## Background
 While AMD & commonJS are great for dyamically including code in your application, i like my code to be structured like a tree. I.e. I want one central global object with a deeply nested tree of children. As you go down the tree, the modules get smaller and more specific. 
 
-  e.g. Asssume you are writing a dog-walking app called "WAG", your object heiracrhy should look roughly like this
+  e.g. Asssume you are writing a dog-walking app called "WAG", your object heirarchy should look roughly like this
 
 ```
     WAG
@@ -47,7 +47,7 @@ You should also ideally structure your code to look like below. These files can 
     /utils.js
 ```
 
-##Include the lib
+##Usage
 The usage of namespace.js is simple. Include it as script file
 ```html
 <script src="js/namespace.js"></script>
