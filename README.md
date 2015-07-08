@@ -107,7 +107,7 @@ which in turn included the following code
 
 
 ##Understanding Inheritance
-Lets exampine the following code
+Lets examine the following code
 ```javascript
 
     namespace("Hello.Animals");
