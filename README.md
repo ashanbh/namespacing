@@ -1,7 +1,7 @@
 # namespacing
 A Basic Namespacing implementation 
-Download here: https://github.com/ashanbh/namespacing/raw/master/js/namespace.js
-See Esample here:
+* Download here: https://github.com/ashanbh/namespacing/raw/master/js/namespace.js
+* See Example here:
 
 ## Background
 While AMD & commonJS are great for dyamically including code in your application, i like my code to be structured like a tree. I.e. I want one central global object with a deeply nested tree of children. As you go down the tree, the modules get smaller and more specific. 
