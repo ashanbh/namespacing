@@ -4,12 +4,14 @@ A Basic Namespacing implementation
 ## Background
 While AMD & commonJS are great for dyamically including code in your application, i like my code to be structured like a tree. I.e. I want one central global object with a deeply nested tree of children. As you go down the tree, the modules get smaller and more specific. 
 
-  e.g. Asssume you are writing a dog-walking app called "WAG", i would want your code to look roughly like this
+  e.g. Asssume you are writing a dog-walking app called "WAG", i would want your object Heiracrhy to look roughly like this
 
 ```
     WAG
     |-Models
         |-DogWalker
+            |-PartTime
+            |-FullTime
         |-Dog
         |-DogParent
     |-Views
@@ -21,6 +23,26 @@ While AMD & commonJS are great for dyamically including code in your application
         |-Dog
         |-DogParent    
     |-Utils
+```
+You should also ideally structure your code to look like the structire below. These files can be combined at compile time using a minification library.
+
+```
+    /wag
+        /models
+            /dogWalker
+                /modelDogWalkerPartTime.js
+                /modelDogWalkerFullTime.js
+            /modelDog.js
+            /modelDogParent.js
+    /Views
+          /viewDogWalker.js
+          /viewDog.js
+          /viewDogParent.js    
+    /Controllers
+          /controllersDogWalker.js
+          /controllersDogWalkerDog.js
+          /controllersDogWalkerDogParent.js    
+    /utils.js
 ```
 
 All models in one directory. Submodels of parent models in child folders. That is easy to do. 
