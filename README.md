@@ -47,12 +47,12 @@ You should also ideally structure your code to look like below. These files can 
 
 ##Include the lib
 The usage of namespace.js is simple. Include it as script file
-```
+```html
 <script src="js/namespace.js"></script>
 ```
 
 or include it using AMD
-```
+```html
 <script src="lib/require.js"></script>
 <script>
     require.config({
@@ -67,14 +67,14 @@ or include it using AMD
 ##Initialization
 Either way you will have a global object called **namespace**
 You must call **namespace.init** to setup the root namespace for your app
-```
+```javascript
 <script>
     namespace.init("WAG");
 </script>
 ```
 
 Attempts to re-initializing the namespace will cause errors
-```
+```html
 <script>
     namespace.init("WAG");
     namespace.init("HAB"); //ERROR!
@@ -83,12 +83,12 @@ Attempts to re-initializing the namespace will cause errors
 
 ##Simple Example
 Now you can partition your code into separate files and start adding functionality
-```
+```html
 <script src="wag-model-dog.js"></script>
 <script src="wag-model-dogParent.js"></script>
 ```
 which in turn included the following code
-```
+```javascript
     namespace("WAG.Model.Dog");
     (function (ns) {
         ns.getData = function () {
@@ -108,14 +108,17 @@ which in turn included the following code
 
 ##Understanding Inheritance
 Lets exampine the following code
-```
-<script>
+```javascript
+
     namespace("Hello.Animals");
     (function (ns) {
         ns.areEdible = function () {
             return true;
         }
-        ns.usePhotoSynthesis = "maybe"; //http://www.iflscience.com/plants-and-animals/sea-slug-steals-photosynthesis-genes-its-algae-meal
+        
+        //http://www.iflscience.com/plants-and-animals/sea-slug-steals-photosynthesis-genes-its-algae-meal
+        ns.usePhotoSynthesis = "maybe"; 
+
     })(Hello.Animals);
 
 
@@ -139,8 +142,38 @@ Lets exampine the following code
 
 
     namespace("Hello.Animals.Snails").extend(Hello.Animals);
+    
+```
+    
+One namespace can extend another namespace using 
+```javascript
+namespace("Hello.Animals.Dogs").extend(Hello.Animals)
+```
+or
+```javascript
+namespace("Hello.Animals.Dogs");
+Hello.Animals.Dogs.extend(Hello.Animals)
+```
+
+Objects and methods have access to their parent, using the **parent()** function
+```
+namespace("Hello.Animals.Dogs").extend(Hello.Animals);
+    (function (ns) {
+        ns.areEdible = function () {
+            return "Can we call Super ?:"+ns.parent().areEdible() + ns.parent('areEdible')();
+        }
+           
+        ns.canBark = true
+    })(Hello.Animals.Dogs);
+    
+    
+    //ns.parent().areEdible === ns.parent('areEdible') === true
+```
 
 
+
+So, executing the peice of script below
+```javascript
     write("<h2>Extension of Namespaces</h2>");
     write("Cats Are edible?", Hello.Animals.Cats.areEdible());
     write("Dogs Are edible?", Hello.Animals.Dogs.areEdible());
@@ -151,11 +184,9 @@ Lets exampine the following code
     write("Animals:", Hello.Animals);
     write("Animals' children's names:", Hello.Animals.getChildren().map(function(o){return o.getNSName()}));
     write("Animals' children", Hello.Animals.getChildren());
-    
 ```
-    
-    Which produces the following output
 
+Will produce the output:
 ```
 Cats Are edible? false
 Dogs Are edible? Can we call Super ?:truetrue
@@ -225,5 +256,8 @@ Animals' children
     }
 ]
 ```
+
+
+
     
 
