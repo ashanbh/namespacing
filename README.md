@@ -2,7 +2,28 @@
 A Basic Namespacing implementation 
 
 ## Background
+While AMD & commonJS are great for dyamically including code in your application, i like my code to be structured like a tree. I.e. I want one central global object with a deeply nested tree of children. As you go down the tree, the modules get smaller and more specific. 
 
+  e.g. Asssume you are writing a dog-walking app called "WAG", i would want your code to look roughly like this
+
+```
+    WAG
+    |-Models
+        |-DogWalker
+        |-Dog
+        |-DogParent
+    |-Views
+        |-DogWalker
+        |-Dog
+        |-DogParent    
+    |-Controllers
+        |-DogWalker
+        |-Dog
+        |-DogParent    
+    |-Utils
+```
+
+All models in one directory. Submodels of parent models in child folders. That is easy to do. 
 <script src="js/namespace.js"></script>
 
 <script>
