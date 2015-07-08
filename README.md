@@ -24,8 +24,8 @@ While AMD & commonJS are great for dyamically including code in your application
         |-DogParent    
     |-Utils
 ```
-You should also ideally structure your code to look like the structire below. These files can be combined at compile time using a minification library.
 
+You should also ideally structure your code to look like the structire below. These files can be combined at compile time using a minification library.
 ```
     /wag
         /models
@@ -45,9 +45,24 @@ You should also ideally structure your code to look like the structire below. Th
     /utils.js
 ```
 
-All models in one directory. Submodels of parent models in child folders. That is easy to do. 
+##Usage
+The usage of namespace.js is simple. Include it as script file
+```
 <script src="js/namespace.js"></script>
+```
 
+or
+Include it using AMD
+```
+<!--script>
+    require.config({
+        baseUrl: "js/"
+    });
+    requirejs(['namespace'], function (namespace) {
+        namespace.init("HELLOWROLD");
+    });
+</script-->
+```
 <script>
     write("<h2>No Namespacing</h2>")
     myFunction();
