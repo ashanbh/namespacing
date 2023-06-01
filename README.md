@@ -47,7 +47,7 @@ You should also ideally structure your code to look like below. These files can 
     /utils.js
 ```
 
-##Usage
+## Usage
 The usage of namespace.js is simple. Include it as script file
 ```html
 <script src="js/namespace.js"></script>
@@ -66,7 +66,7 @@ or include it using AMD
 </script>
 ```
 
-##Initialization
+## Initialization
 Either way you will have a global object called **namespace**
 You must call **namespace.init** to setup the root namespace for your app
 ```javascript
@@ -83,7 +83,7 @@ Attempts to re-initializing the namespace will cause errors
 </script>
 ```
 
-##Simple Example
+## Simple Example
 Now you can partition your code into separate files and start adding functionality
 ```html
 <script src="wag-model-dog.js"></script>
@@ -108,7 +108,7 @@ which in turn included the following code
 ```
 
 
-##Understanding Inheritance
+## Understanding Inheritance
 Lets examine the following code
 ```javascript
 
